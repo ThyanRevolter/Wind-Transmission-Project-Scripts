@@ -1,11 +1,13 @@
+#The folder which as the osm data
 folder=r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\Geofabrik Data\rhode-island-latest-free.shp'
+
 
 import os
 import processing
 
 #get the path of the file in the 'path' variable
 for file in os.listdir(folder):    
-    if file.find('roads') != -1 and file.endswith(".shp") :
+    if file.find('roads') != -1 and file.endswith(".shp") : #Find the roads shape file from others
         print(file)
         path = folder+'/'+file
         print(path)
@@ -23,6 +25,7 @@ save_options = QgsVectorFileWriter.SaveVectorOptions()
 save_options.driverName = "ESRI Shapefile"
 save_options.fileEncoding = "UTF-8"
 
+#Creating two output shapefile for Major and Minor
 mjr_outputpath = r"C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\Geofabrik Data\Major_Roads.shp"
 mnr_outputpath = r"C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\Geofabrik Data\Minor_Roads.shp"
 
@@ -49,6 +52,7 @@ if mjr_outfile.hasError() != QgsVectorFileWriter.NoError:
 if mnr_outfile.hasError() != QgsVectorFileWriter.NoError:
     print("Error when creating shapefile: ",  mnr_outfile.errorMessage())
 
+#Looping through each feature in the OSM file and filtering it based on the condition below
 for feature in vlayer.getFeatures():
   className = feature['fclass']
   if className == 'living_street' or className == 'motorway'or \
@@ -74,6 +78,7 @@ for feature in vlayer.getFeatures():
 print(countMinor)
 print(countMajor)
     
+#Adding the processed Layer to the Map    
 iface.addVectorLayer(mjr_outputpath,'Major_Roads','ogr')
 iface.addVectorLayer(mnr_outputpath,'Minor_Roads','ogr')
 del mjr_outfile
