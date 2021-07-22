@@ -1,3 +1,8 @@
+Popup Name: 
+{State_Abbr} Total Remaining Area for {Speed} m/s
+
+Expressions
+-----------------------------------------------------------------------------------------------------------------------------------
 Total Available Area km-sq
 
 Sum($layer,'Area')/1000000
@@ -46,7 +51,7 @@ var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
                             "STATE_ABBR=@countryName")
 var CF =0
 for(var feature in countryFeature) {
-    CF = feature["CF_5"]
+    CF = feature["CF_5"] //Different for different Speeds
 }
 (Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF
 
@@ -59,7 +64,7 @@ var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
                             "STATE_ABBR=@countryName")
 var CF =0
 for(var feature in countryFeature) {
-    CF = feature["CF_5"]
+    CF = feature["CF_5"] //Different for Different Speeds
 }
 ((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93
 
@@ -78,7 +83,15 @@ for(var feature in countryFeature) {
 population/(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)
 
 
+
 --------------------------------------------------------------------------------------------------------------------------------------
+
+
+Pie Chart Name
+Remaining Area vs Total Area
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Standalone CF Formula Not needed to include in the expression
 CF
 
 var countryName = $feature['State_Abbr']
@@ -93,9 +106,6 @@ if(CF !=null) {
 } else {
     return 0
 }
-
-
---------------------------------------------------------------------------------------------------------------------------------------
 
 
 
