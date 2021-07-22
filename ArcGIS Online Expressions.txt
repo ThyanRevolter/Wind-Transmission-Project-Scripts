@@ -1,0 +1,103 @@
+Total Available Area km-sq
+
+Sum($layer,'Area')/1000000
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Total State Area km-sq
+
+var countryName = $feature['State_Abbr']
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var statearea =0
+for(var feature in countryFeature) {
+    statearea = feature["State_Area"]
+}
+statearea
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Population (2020)
+
+var countryName = $feature['State_Abbr']
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var population =0
+for(var feature in countryFeature) {
+    population = feature["Population_2020"]
+}
+population
+
+------------------------------------------------------------------------------------------------------------------------------------
+Potential WTG (N turb)
+
+Floor(Sum($layer,'Area')/(1000000*0.402431641))
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+Potential GW Installed
+
+(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)/1000
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Energy Output (TWh)
+
+var countryName = $feature['State_Abbr']
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var CF =0
+for(var feature in countryFeature) {
+    CF = feature["CF_5"]
+}
+(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Energy Output with Array Losses (TWh)
+
+var countryName = $feature['State_Abbr']
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var CF =0
+for(var feature in countryFeature) {
+    CF = feature["CF_5"]
+}
+((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Capita per MW
+
+var countryName = $feature['State_Abbr']
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var population =0
+for(var feature in countryFeature) {
+    population = feature["Population_2020"]
+}
+population/(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+CF
+
+var countryName = $feature['State_Abbr']
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var CF =0
+for(var feature in countryFeature) {
+    CF = feature["CF_5"]
+}
+if(CF !=null) {
+    return CF
+} else {
+    return 0
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
