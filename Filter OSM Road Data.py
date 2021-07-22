@@ -1,5 +1,7 @@
 #The folder which as the osm data
-folder=r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\Geofabrik Data\rhode-island-latest-free.shp'
+folder=r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\USA Wind Files State Wise\California\norcal-latest-free.shp'
+outputFolder = folder + r"\Filtered"
+os.makedirs(outputFolder)
 
 
 import os
@@ -26,8 +28,8 @@ save_options.driverName = "ESRI Shapefile"
 save_options.fileEncoding = "UTF-8"
 
 #Creating two output shapefile for Major and Minor
-mjr_outputpath = r"C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\Geofabrik Data\Major_Roads.shp"
-mnr_outputpath = r"C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\Geofabrik Data\Minor_Roads.shp"
+mjr_outputpath = outputFolder + "\Major_Roads.shp"
+mnr_outputpath = outputFolder + "\Minor_Roads.shp"
 
 mjr_outfile = QgsVectorFileWriter.create(
   mjr_outputpath,
