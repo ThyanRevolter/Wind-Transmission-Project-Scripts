@@ -1,5 +1,5 @@
 #The folder which as the osm data
-folder=r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\USA Wind Files State Wise\California\norcal-latest-free.shp'
+folder=r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\USA Wind Files State Wise\California\socal-latest-free.shp'
 outputFolder = folder + r"\Filtered"
 os.makedirs(outputFolder)
 
