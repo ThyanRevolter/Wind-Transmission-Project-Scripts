@@ -50,8 +50,9 @@ var countryName = $feature['State_Abbr']
 var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
                             "STATE_ABBR=@countryName")
 var CF =0
+var CF_String = 'CF_' + $feature["Speed"]
 for(var feature in countryFeature) {
-    CF = feature["CF_5"] //Different for different Speeds
+    CF = feature[CF_String] //Different for different Speeds
 }
 (Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF
 
@@ -63,8 +64,9 @@ var countryName = $feature['State_Abbr']
 var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
                             "STATE_ABBR=@countryName")
 var CF =0
+var CF_String = 'CF_' + $feature["Speed"]
 for(var feature in countryFeature) {
-    CF = feature["CF_5"] //Different for Different Speeds
+    CF = feature[CF_String] //Different for different Speeds
 }
 ((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93
 
