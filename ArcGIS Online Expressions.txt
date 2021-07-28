@@ -10,30 +10,18 @@ Sum($layer,'Area')/1000000
 -----------------------------------------------------------------------------------------------------------------------------------
 Total State Area km-sq
 
-var countryName = $feature['State_Abbr']
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var statearea =0
-for(var feature in countryFeature) {
-    statearea = feature["State_Area"]
-}
-statearea
-
-When the Country name is null
-
-var countryName = ''
-if($feature['State_Abbr'] != null) {
-    countryName = $feature['State_Abbr']
+if ($feature['State_Abbr'] != null) {
+    var countryName = $feature['State_Abbr']
+    var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                                "STATE_ABBR=@countryName")
+    var statearea =0
+    for(var feature in countryFeature) {
+        statearea = feature["State_Area"]
+    }
+    return statearea
 } else {
-    countryName = 'RI'
+    return 0
 }
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var statearea =0
-for(var feature in countryFeature) {
-    statearea = feature["State_Area"]
-}
-statearea
 
 -----------------------------------------------------------------------------------------------------------------------------------
 Population (2020)
