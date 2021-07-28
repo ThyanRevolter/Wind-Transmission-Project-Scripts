@@ -26,14 +26,18 @@ if ($feature['State_Abbr'] != null) {
 -----------------------------------------------------------------------------------------------------------------------------------
 Population (2020)
 
-var countryName = $feature['State_Abbr']
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var population =0
-for(var feature in countryFeature) {
-    population = feature["Population_2020"]
+if ($feature['State_Abbr'] != null) {
+  var countryName = $feature['State_Abbr']
+  var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                              "STATE_ABBR=@countryName")
+  var population =0
+  for(var feature in countryFeature) {
+      population = feature["Population_2020"]
+  }
+  return population
+} else {
+    return 0
 }
-population
 
 ------------------------------------------------------------------------------------------------------------------------------------
 Potential WTG (N turb)
@@ -50,45 +54,54 @@ Potential GW Installed
 -------------------------------------------------------------------------------------------------------------------------------------
 Energy Output (TWh)
 
-var countryName = $feature['State_Abbr']
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var CF =0
-var CF_String = 'CF_' + $feature["Speed"]
-for(var feature in countryFeature) {
-    CF = feature[CF_String] 
+if($feature['State_Abbr'] != null) {
+  var countryName = $feature['State_Abbr']
+  var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                              "STATE_ABBR=@countryName")
+  var CF =0
+  var CF_String = 'CF_' + $feature["Speed"]
+  for(var feature in countryFeature) {
+      CF = feature[CF_String] 
+  }
+  return (Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF
+} else {
+    return 0
 }
-(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF
-
 
 --------------------------------------------------------------------------------------------------------------------------------------
 Energy Output with Array Losses (TWh)
 
-var countryName = $feature['State_Abbr']
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var CF =0
-var CF_String = 'CF_' + $feature["Speed"]
-for(var feature in countryFeature) {
-    CF = feature[CF_String] 
+if($feature['State_Abbr'] != null) {
+  var countryName = $feature['State_Abbr']
+  var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                              "STATE_ABBR=@countryName")
+  var CF =0
+  var CF_String = 'CF_' + $feature["Speed"]
+  for(var feature in countryFeature) {
+      CF = feature[CF_String] 
+  }
+  return ((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93
+} else {
+    return 0
 }
-((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93
 
 
 
 --------------------------------------------------------------------------------------------------------------------------------------
 Capita per MW
 
-var countryName = $feature['State_Abbr']
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var population =0
-for(var feature in countryFeature) {
-    population = feature["Population_2020"]
+if($feature['State_Abbr'] != null) {
+  var countryName = $feature['State_Abbr']
+  var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                              "STATE_ABBR=@countryName")
+  var population =0
+  for(var feature in countryFeature) {
+      population = feature["Population_2020"]
+  }
+  population/(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)
+} else {
+  return 0
 }
-population/(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)
-
-
 
 --------------------------------------------------------------------------------------------------------------------------------------
 
