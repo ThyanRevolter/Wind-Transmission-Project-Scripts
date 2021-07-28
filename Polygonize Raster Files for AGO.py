@@ -1,9 +1,9 @@
 import os
 import processing
 import qgis.core
-inputfolder = r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\USA Wind Files State Wise\Rhode Island\Remaining Area TIFF\Sample'
-state_Name = 'Rhode Island'
-state_abbr = 'RI'
+inputfolder = r'C:\Users\asakthivelu\Desktop\Personal\Wind Transmission Data\USA Wind Files State Wise\Connecticut\connecticut-areacalc'
+state_Name = 'Connecticut'
+state_abbr = 'CT'
 outputFolder = inputfolder + r'/' + state_Name
 os.makedirs(outputFolder)
 

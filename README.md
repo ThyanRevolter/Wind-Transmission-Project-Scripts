@@ -27,3 +27,34 @@
 <li>You can see two shapefiles in this folder named "Major_Roads" & "Minor_Roads" </li>
 </ol>
 </section>
+<br>
+<section>
+<h2>ArcGIS Online Details and Steps</h2>
+<p>Color Code for the remaining Area Vectors</p>
+<table>
+  <tr>
+    <th>5 Speed</th>
+    <th>#d9f0a3</th>
+  </tr>
+  <tr>
+    <td>6 Speed</td>
+    <td>#addd8e</td>
+  </tr>
+  <tr>
+    <td>7 Speed</td>
+    <td>#78c679</td>
+  </tr>
+  <tr>
+    <td>8 Speed</td>
+    <td>#41ab5d</td>
+  </tr>
+  <tr>
+    <td>9 Speed</td>
+    <td>#238443</td>
+  </tr>
+  <tr>
+    <td>10 Speed</td>
+    <td>#005a32</td>
+  </tr>
+</table>
+</section>
