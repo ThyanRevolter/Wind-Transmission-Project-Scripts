@@ -19,6 +19,22 @@ for(var feature in countryFeature) {
 }
 statearea
 
+When the Country name is null
+
+var countryName = ''
+if($feature['State_Abbr'] != null) {
+    countryName = $feature['State_Abbr']
+} else {
+    countryName = 'RI'
+}
+var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                            "STATE_ABBR=@countryName")
+var statearea =0
+for(var feature in countryFeature) {
+    statearea = feature["State_Area"]
+}
+statearea
+
 -----------------------------------------------------------------------------------------------------------------------------------
 Population (2020)
 
