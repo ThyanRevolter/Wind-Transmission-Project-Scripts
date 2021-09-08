@@ -3,12 +3,12 @@ Popup Name:
 
 Expressions
 -----------------------------------------------------------------------------------------------------------------------------------
-Total Available Area km-sq
+Total Available Area with {Speed} m/s Wind Threshold (km2)
 
 Sum($layer,'Area')/1000000
 
 -----------------------------------------------------------------------------------------------------------------------------------
-Total State Area km-sq
+Total State Area (km2)
 
 if ($feature['State_Abbr'] != null) {
     var countryName = $feature['State_Abbr']
@@ -23,30 +23,14 @@ if ($feature['State_Abbr'] != null) {
     return 0
 }
 
------------------------------------------------------------------------------------------------------------------------------------
-Population (2020)
-
-if ($feature['State_Abbr'] != null) {
-  var countryName = $feature['State_Abbr']
-  var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                              "STATE_ABBR=@countryName")
-  var population =0
-  for(var feature in countryFeature) {
-      population = feature["Population_2020"]
-  }
-  return population
-} else {
-    return 0
-}
-
 ------------------------------------------------------------------------------------------------------------------------------------
-Potential WTG (N turb)
+Number of Turbines
 
 Floor(Sum($layer,'Area')/(1000000*0.402431641))
 
 
 ------------------------------------------------------------------------------------------------------------------------------------
-Potential GW Installed
+Potential Power Installed (GW)
 
 (Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)/1000
 
@@ -88,7 +72,7 @@ if($feature['State_Abbr'] != null) {
 
 
 --------------------------------------------------------------------------------------------------------------------------------------
-Capita per MW
+People per MW
 
 if($feature['State_Abbr'] != null) {
   var countryName = $feature['State_Abbr']
@@ -107,7 +91,7 @@ if($feature['State_Abbr'] != null) {
 
 
 Pie Chart Name
-Remaining Area vs Total Area
+Remaining Area for Wind Development
 --------------------------------------------------------------------------------------------------------------------------------------
 
 Standalone CF Formula Not needed to include in the expression
