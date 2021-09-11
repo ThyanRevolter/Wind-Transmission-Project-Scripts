@@ -107,7 +107,7 @@ if($feature['State_Abbr'] != null) {
 
 
 Pie Chart Name
-Remaining Area vs Total Area
+Remaining Area for Wind Development with {Speed} m/s Threshold
 --------------------------------------------------------------------------------------------------------------------------------------
 
 Standalone CF Formula Not needed to include in the expression
