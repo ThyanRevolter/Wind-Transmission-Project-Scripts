@@ -104,27 +104,27 @@ if($feature['State_Abbr'] != null) {
 }
 
 --------------------------------------------------------------------------------------------------------------------------------------
+Capacity Factor for current speed
 
+if($feature['State_Abbr'] != null) {
+  var countryName = $feature['State_Abbr']
+  var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
+                              "STATE_ABBR=@countryName")
+  var CF = 0
+  var CF_String = 'CF_' + $feature["Speed"]
+  for(var feature in countryFeature) {
+      CF = feature[CF_String] 
+  }
+  return CF
+} else {
+    return 0
+}
 
+-------------------------------------------------------------------------------------------------------------------------------------
 Pie Chart Name
 Remaining Area for Wind Development with {Speed} m/s Threshold
 --------------------------------------------------------------------------------------------------------------------------------------
 
-Standalone CF Formula Not needed to include in the expression
-CF
-
-var countryName = $feature['State_Abbr']
-var countryFeature = Filter(FeatureSetByName($map,"Statewise_Data"),
-                            "STATE_ABBR=@countryName")
-var CF =0
-for(var feature in countryFeature) {
-    CF = feature["CF_5"]
-}
-if(CF !=null) {
-    return CF
-} else {
-    return 0
-}
 
 
 
