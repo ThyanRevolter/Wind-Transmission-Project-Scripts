@@ -34,27 +34,27 @@
 <table>
   <tr>
     <th>5 Speed</th>
-    <th>#d9f0a3</th>
+    <th>#0060A6</th>
   </tr>
   <tr>
     <td>6 Speed</td>
-    <td>#addd8e</td>
+    <td>#2782A4</td>
   </tr>
   <tr>
     <td>7 Speed</td>
-    <td>#78c679</td>
+    <td>#A889B8</td>
   </tr>
   <tr>
     <td>8 Speed</td>
-    <td>#41ab5d</td>
+    <td>#D78E9A</td>
   </tr>
   <tr>
     <td>9 Speed</td>
-    <td>#238443</td>
+    <td>#FFA18E</td>
   </tr>
   <tr>
     <td>10 Speed</td>
-    <td>#005a32</td>
+    <td>#FFCABF</td>
   </tr>
 </table>
 </section>
