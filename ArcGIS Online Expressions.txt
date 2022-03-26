@@ -5,7 +5,7 @@ Expressions
 -----------------------------------------------------------------------------------------------------------------------------------
 Total Available Area km-sq
 
-Sum($layer,'Area')/1000000
+round(Sum($layer,'Area')/1000000,2)
 
 -----------------------------------------------------------------------------------------------------------------------------------
 Total State Area km-sq
@@ -18,7 +18,7 @@ if ($feature['State_Abbr'] != null) {
     for(var feature in countryFeature) {
         statearea = feature["State_Area"]
     }
-    return statearea
+    return round(statearea,2)
 } else {
     return 0
 }
@@ -34,7 +34,7 @@ if ($feature['State_Abbr'] != null) {
   for(var feature in countryFeature) {
       population = feature["Population_2020"]
   }
-  return population
+  return round(population,2)
 } else {
     return 0
 }
@@ -63,7 +63,7 @@ if($feature['State_Abbr'] != null) {
   for(var feature in countryFeature) {
       CF = feature[CF_String] 
   }
-  return (Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF
+  return round((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF,2)
 } else {
     return 0
 }
@@ -80,7 +80,7 @@ if($feature['State_Abbr'] != null) {
   for(var feature in countryFeature) {
       CF = feature[CF_String] 
   }
-  return ((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93
+  return round(((Floor(Sum($layer,'Area')/(1000000*0.402431641))*5*8760)/(1000000)*CF)*0.93,2)
 } else {
     return 0
 }
@@ -98,7 +98,7 @@ if($feature['State_Abbr'] != null) {
   for(var feature in countryFeature) {
       population = feature["Population_2020"]
   }
-  population/(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5)
+  round(population/(Floor(Sum($layer,'Area')/(1000000*0.402431641))*5),0)
 } else {
   return 0
 }
@@ -115,7 +115,7 @@ if($feature['State_Abbr'] != null) {
   for(var feature in countryFeature) {
       CF = feature[CF_String] 
   }
-  return CF
+  return round(CF,2)
 } else {
     return 0
 }
